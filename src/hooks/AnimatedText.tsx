@@ -14,11 +14,11 @@ export const AnimatedText = () => {
         setIndex((prev) => prev + 1);
       } else {
         setTimeout(() => {
-          setDisplayedText(""); // Limpa o texto para reiniciar
+          setDisplayedText("");
           setIndex(0);
-        }, 2000); // Espera 2 segundos antes de reiniciar
+        }, 2000);
       }
-    }, 50); // Velocidade da digitação
+    }, 50);
 
     return () => clearInterval(interval);
   }, [index, text]);

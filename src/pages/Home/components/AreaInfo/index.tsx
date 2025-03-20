@@ -1,7 +1,5 @@
-// import { Button } from "../../../components/Button";
-// import { ButtonFiltro } from "../../../components/ButtonFiltro";
-import { Map } from "../../../components/Map";
-import { AnimatedText } from "../../../hooks/AnimatedText";
+import { Map } from "@components/Map";
+import { AnimatedText } from "@/hooks/AnimatedText";
 
 export const AreaInfo = () => {
   const coordenadas = {
@@ -35,11 +33,6 @@ export const AreaInfo = () => {
           />
         </div>
       </div>
-
-      {/* <div className="flex justify-around container max-w-lg">
-        <Button text="Adicionar Pet" />
-        <ButtonFiltro />
-      </div> */}
     </div>
   );
 };

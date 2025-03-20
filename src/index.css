@@ -6,17 +6,25 @@
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #fff;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: #a0a0a0 !important; /* Define uma cor fixa para o texto */
+  caret-color: #a0a0a0; /* Define a cor do cursor */
+  background-color: transparent !important; /* Remove o fundo cinza */
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset !important; /* Remove sombra do autofill */
+  transition: background-color 9999s ease-in-out 0s; /* Evita que o Edge altere o fundo */
+}
+input::placeholder {
+  color: #a0a0a0 !important; /* Ou outra cor desejada */
+  opacity: 1; /* Garante que o placeholder não fique transparente */
 }
 .leaflet-container {
-  height: 20vh;
+  height: 30vh;
   width: 20vw;
+}
+body {
+  overflow-x: hidden;
 }

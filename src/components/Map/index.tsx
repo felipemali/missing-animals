@@ -22,7 +22,7 @@ export const Map = ({ latitude, longitude, pets }: MapProps) => {
   return (
     <MapContainer
       center={position}
-      zoom={13}
+      zoom={12}
       scrollWheelZoom={false}
       className="border-4 border-solid"
     >
