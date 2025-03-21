@@ -1,9 +1,12 @@
+import { Pets } from "@/types/Pets";
+
 type CardProps = {
   image: string;
   index: number;
   textButton: string;
+  data: Pets;
 };
-export const Card = ({ image, index, textButton }: CardProps) => {
+export const Card = ({ image, index, textButton, data }: CardProps) => {
   return (
     <div
       key={index}
@@ -14,12 +17,10 @@ export const Card = ({ image, index, textButton }: CardProps) => {
       </div>
       <div className="p-4">
         <h2 className="text-xl font-semibold text-gray-800 text-center">
-          Nome do Pet {index}
+          {data?.name}
         </h2>
-        <p className="text-white">
-          Descrição breve sobre o pet perdido. Inclua características únicas.
-        </p>
-        <p className="text-white mt-2 font-medium">📍 Cidade: Nome da Cidade</p>
+        <p className="text-white text-center">{data?.description}</p>
+        <p className="text-white mt-2 font-medium">📍 Cidade: {data?.city}</p>
         <div className="mt-4">
           <button className="cursor-pointer w-full bg-white text-neutral py-2 px-4 rounded-full hover:bg-orange-600 transition">
             {textButton}

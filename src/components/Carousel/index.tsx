@@ -13,9 +13,9 @@ export const Carousell = () => {
   const cards = Array.from({ length: 20 }, (_, i) => i + 1);
 
   const cardsPerPage = 5;
-  const startIndex = (active - 1) * cardsPerPage;
-  const endIndex = startIndex + cardsPerPage;
-  const visibleCards = cards.slice(startIndex, endIndex);
+  // const startIndex = (active - 1) * cardsPerPage;
+  // const endIndex = startIndex + cardsPerPage;
+  // const visibleCards = cards.slice(startIndex, endIndex);
 
   const pets = useFecthPets();
 
@@ -46,16 +46,17 @@ export const Carousell = () => {
             index={index}
             key={index}
             image={image_test}
+            data={pet}
           />
         ))}
-        {visibleCards.map((cardIndex) => (
+        {/* {visibleCards.map((cardIndex) => (
           <Card
             textButton="Entrar em Contato"
             index={cardIndex}
             key={cardIndex}
             image={image_test}
           />
-        ))}
+        ))} */}
       </div>
 
       {/* Paginação */}

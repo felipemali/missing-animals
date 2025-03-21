@@ -1,6 +1,6 @@
 import { Menu } from "@components/Menu";
-import { classSVG } from "@helpers";
-import { AreaAddLostPet } from "./AreaAddLostPet";
+import { classSVG } from "@/helpers";
+import { ContentAddLostPet } from "@pages/AddLostPets/ContentAddLostPet";
 import pata from "../../assets/pata.png";
 
 export const AddLostPet = () => {
@@ -11,7 +11,7 @@ export const AddLostPet = () => {
         {classSVG.map((c: string, index: number) => (
           <img key={index} className={c} src={pata} alt="pata" />
         ))}
-        <AreaAddLostPet />
+        <ContentAddLostPet />
       </main>
     </div>
   );
