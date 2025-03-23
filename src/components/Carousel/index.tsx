@@ -40,13 +40,13 @@ export const Carousell = () => {
     <div>
       {/* Cards */}
       <div className="flex space-x-4 overflow-hidden p-5">
-        {pets?.map((pet: Pets, index: number) => (
+        {pets?.map((data: Pets, index: number) => (
           <Card
             textButton="Entrar em Contato"
             index={index}
             key={index}
             image={image_test}
-            data={pet}
+            data={data}
           />
         ))}
         {/* {visibleCards.map((cardIndex) => (

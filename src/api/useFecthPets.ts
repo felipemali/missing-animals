@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { supabase } from "@/supabaseClient";
+import { supabase } from "@/supabase/supabaseClient";
 import { Pets } from "@/types/Pets";
 
 export const useFecthPets = () => {
@@ -7,7 +7,9 @@ export const useFecthPets = () => {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const { data, error } = await supabase.from("pets").select("*");
+      const { data, error } = await supabase.from("pet").select("*");
+      // console.log("dados que veio do banco:", data);
+
       if (error) {
         console.error("Erro ao buscar pets:", error.message);
       } else {

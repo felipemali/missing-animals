@@ -5,6 +5,9 @@ import { schema } from "@pages/AddLostPets/components/Form/schemaYup";
 import { addPet } from "@/api/addPet";
 import { propertiesTextForm } from "./propertiesForm";
 import { MessageErrorForm } from "../../../../components/MessageErrorForm";
+import { sendImage } from "../../../../api/sendImage";
+import { useState } from "react";
+import { ButtonForm } from "../../../../components/ButtomForm";
 // import { Pets } from "@/types/Pets";
 
 export const FormAddPet = () => {
@@ -12,18 +15,33 @@ export const FormAddPet = () => {
     mode: "all",
     resolver: yupResolver(schema),
   });
+  const [urlImage, setUrlImage] = useState<string | null>();
 
   const { errors } = formState;
 
   console.log("errors Form addLostPet", errors);
 
+  const uploadImage = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const url = await sendImage(event);
+    console.log("a url:", url);
+    setUrlImage(url);
+  };
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const onSubmit = async (data: any) => {
-    console.log(data);
+    const dataFormated = {
+      pet_type: data.petType,
+      image: urlImage,
+      name: data.name,
+      street: data.street,
+      phone: data.tel,
+      description: data.description,
+    };
+    console.log("DADOS FORMATADOS:", dataFormated);
 
     try {
-      await schema.validate(data);
-      const result = await addPet(data);
+      // await schema.validate(dataFormated);
+      const result = await addPet(dataFormated);
       console.log(result);
     } catch (error) {
       console.error(error);
@@ -37,7 +55,7 @@ export const FormAddPet = () => {
           Tipo de Pet
         </label>
         <select
-          {...register("petType")}
+          {...register("pet_type")}
           className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 text-neutral"
         >
           <option value="">Selecione</option>
@@ -50,7 +68,11 @@ export const FormAddPet = () => {
         />
       </div>
       {propertiesTextForm.map((propertie, index) => (
-        <div className="mb-4" key={index}>
+        <div
+          className="mb-4"
+          key={index}
+          onChange={propertie.type === "file" ? uploadImage : () => {}}
+        >
           <label className="block text-gray-600 font-medium mb-1">
             {propertie.label}
           </label>
@@ -69,12 +91,7 @@ export const FormAddPet = () => {
           />
         </div>
       ))}
-      {/* Botão de Adicionar Pet Perdido */}
-      <div className="flex justify-center col-span-2 mt-4">
-        <button className="cursor-pointer w-full bg-orange-500 text-white font-semibold py-2 rounded-lg hover:bg-orange-600 transition">
-          Adicionar Pet Perdido
-        </button>
-      </div>
+      <ButtonForm text="Adicionar Pet Perdido" />
     </form>
   );
 };

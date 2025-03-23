@@ -13,20 +13,7 @@ export const propertiesTextForm = [
     register: "name",
     placeholder: "Nome do Pet...",
   },
-  {
-    label: "UF",
-    type: "text",
-    accept: "",
-    register: "UF",
-    placeholder: "UF do seu Estado",
-  },
-  {
-    label: "Cidade",
-    type: "text",
-    accept: "",
-    register: "city",
-    placeholder: "Nome da Cidade...",
-  },
+
   {
     label: "Rua",
     type: "text",

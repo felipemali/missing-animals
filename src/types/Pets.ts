@@ -1,10 +1,8 @@
 export type Pets = {
-  created_at?: Date;
-  image: string;
+  created_at: Date;
+  image: string | undefined;
   name: string;
   petType: string;
-  UF: string;
-  city: string;
   street: string;
   phone: string;
   description: string;
