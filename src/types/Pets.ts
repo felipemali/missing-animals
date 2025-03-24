@@ -6,4 +6,5 @@ export type Pets = {
   street: string;
   phone: string;
   description: string;
+  user_id?: string;
 };

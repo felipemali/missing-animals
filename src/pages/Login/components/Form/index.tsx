@@ -13,17 +13,30 @@ const inputsForm = [
     placeholder: "Digite sua senha",
   },
 ];
+import { useAuth } from "@/hooks/useAuth";
+
 export const Form = () => {
   const navigate = useNavigate();
+  const { setUser } = useAuth();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
 
   const onSubmit = (event: React.FormEvent) => {
+    console.log("aaaa:", formData);
+
     event.preventDefault();
     const sessionUser = singInUser(formData);
-    console.log("usuario logado:", sessionUser);
+
+    if (!sessionUser) {
+      console.log("usuario Não logado:", sessionUser);
+      return <h1>Credenciais erradas</h1>;
+    } else {
+      console.log("usuario logado:", sessionUser);
+      setUser(sessionUser);
+      navigate("/");
+    }
   };
 
   return (
@@ -33,8 +46,8 @@ export const Form = () => {
           Entrar no Sistema
         </h2>
         <form onSubmit={onSubmit}>
-          {inputsForm.map(({ label, type, placeholder }) => (
-            <div className="mb-4">
+          {inputsForm.map(({ label, type, placeholder }, index) => (
+            <div className="mb-4" key={index}>
               <label className="block text-gray-600 font-medium">{label}</label>
               <input
                 name={type}

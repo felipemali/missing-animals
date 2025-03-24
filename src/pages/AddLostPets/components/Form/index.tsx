@@ -8,6 +8,7 @@ import { MessageErrorForm } from "../../../../components/MessageErrorForm";
 import { sendImage } from "../../../../api/sendImage";
 import { useState } from "react";
 import { ButtonForm } from "../../../../components/ButtomForm";
+import { useAuth } from "@/hooks/useAuth";
 // import { Pets } from "@/types/Pets";
 
 export const FormAddPet = () => {
@@ -16,6 +17,7 @@ export const FormAddPet = () => {
     resolver: yupResolver(schema),
   });
   const [urlImage, setUrlImage] = useState<string | null>();
+  const { user } = useAuth();
 
   const { errors } = formState;
 
@@ -29,13 +31,17 @@ export const FormAddPet = () => {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const onSubmit = async (data: any) => {
+    console.log("data do form create:", data);
+    console.log(user.id);
+
     const dataFormated = {
-      pet_type: data.petType,
+      pet_type: data.pet_type,
       image: urlImage,
       name: data.name,
       street: data.street,
-      phone: data.tel,
+      phone: data.phone,
       description: data.description,
+      user_id: user.id,
     };
     console.log("DADOS FORMATADOS:", dataFormated);
 

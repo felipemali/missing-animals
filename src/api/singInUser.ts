@@ -1,16 +1,17 @@
 import { supabase } from "@/supabase/supabaseClient";
 
-export const singInUser = async ({
-  email,
-  password,
-}: {
+type CredentialUser = {
   email: string;
   password: string;
-}) => {
+};
+export const singInUser = async ({ email, password }: CredentialUser) => {
   const { data, error } = await supabase.auth.signInWithPassword({
     email,
     password,
   });
+
+  
+  console.log("chegou aq");
 
   if (error) {
     console.error("Erro ao fazer login:", error.message);
@@ -22,6 +23,6 @@ export const singInUser = async ({
     // Aqui, você pode redirecionar para a página de confirmação de e-mail
     return null;
   }
-
+  console.log("Access Token:", data.session?.access_token);
   return data.user;
 };

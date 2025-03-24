@@ -9,15 +9,15 @@ import { useFecthPets } from "@/api";
 import { Pets } from "../../types/Pets";
 
 export const Carousell = () => {
+  console.log("caiu no carrousel");
+
   const [active, setActive] = useState(1);
   const cards = Array.from({ length: 20 }, (_, i) => i + 1);
 
   const cardsPerPage = 5;
-  // const startIndex = (active - 1) * cardsPerPage;
-  // const endIndex = startIndex + cardsPerPage;
-  // const visibleCards = cards.slice(startIndex, endIndex);
 
   const pets = useFecthPets();
+  console.log("pets no carrosel:", pets);
 
   console.log("estado active:", active);
   const getItemProps = (index: number): ItemProps => ({

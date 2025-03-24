@@ -4,6 +4,8 @@ declare module "@pagecomponents/*";
 declare module "@pages/*";
 declare module "@helpers/*";
 declare module "@/*";
+declare module "@context/*";
+declare module "@/supabase/*";
 
 declare module "@/models/ItemPagination" {
   export interface ItemProps {

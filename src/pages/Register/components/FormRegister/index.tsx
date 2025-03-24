@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { ButtonForm } from "../../../../components/ButtomForm";
 import { useState } from "react";
 import { User } from "@/types/User";
-import { signUpUser } from "@/api/addUser";
+import { signUpUser } from "@/api/singUpUser";
 const inputsForm = [
   {
     label: "Email",
